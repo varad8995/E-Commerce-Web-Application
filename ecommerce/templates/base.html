@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    
+      <title>
+        {%block title%}UpConstruction Bootstrap Template - {%endblock title%}</title>
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+    
+      <!-- Favicons -->
+      <link href="{% static '/assets/img/favicon.png'%}" rel="icon">
+      <link href="{% static '/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+    
+      <!-- Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+      <!-- Vendor CSS Files -->
+      <link href="{% static '/assets/vendor/bootstrap/css/bootstrap.min.css ' %}" rel="stylesheet">
+      <link href="{% static '/assets/vendor/bootstrap-icons/bootstrap-icons.css ' %}" rel="stylesheet">
+      <link href="{% static '/assets/vendor/fontawesome-free/css/all.min.css ' %}" rel="stylesheet">
+      <link href="{% static '/assets/vendor/aos/aos.css ' %}" rel="stylesheet">
+      <link href="{% static '/assets/vendor/glightbox/css/glightbox.min.css ' %}" rel="stylesheet">
+      <link href="{% static '/assets/vendor/swiper/swiper-bundle.min.css ' %}" rel="stylesheet">
+    
+      <!-- Template Main CSS File -->
+      <link href="{% static '/assets/css/main.css ' %}" rel="stylesheet">
+    
+      <!-- =======================================================
+      * Template Name: UpConstruction
+      * Updated: Aug 30 2023 with Bootstrap v5.3.1
+      * Template URL: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/
+      * Author: BootstrapMade.com
+      * License: https://bootstrapmade.com/license/
+      ======================================================== -->
+    </head>
+    
+    <body>
+    
+      <!-- ======= Header ======= -->
+      <header id="header" class="header d-flex align-items-center">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    
+          <a href="/" class="logo d-flex align-items-center">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <img src="{% static 'images/ekart.webp'%}" alt="" >
+            <h1>E-Kart<span>.</span></h1>
+          </a>
+    
+          <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+          <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a href="/" class="active">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Blog</a></li>
+              <li><a href="/checkout">Checkout</a></li>
+              <li><a href="blog.html">My Profile</a></li>
+
+              {% if request.user.is_authenticated %}
+              <li><a href="/auth/logout/">Log Out</a></li>
+              <h5 class = 'text bg-light'>{{user.username}}</h5>
+              {% else %}
+              <li class="dropdown"><a href="#"><span>Sign In</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="/auth/signup/">Sign Up</a></li>
+                  <li><a href="/auth/login/">Log In</a></li>
+                  
+                </ul>
+              </li>
+              {% endif %}
+
+
+              
+              <li><a href="/contact">Contact</a></li>
+              <button type="button" class="nav-link scrollto bg-danger p-3 m-2 text-white" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" ><i class="fa-solid fa-cart-shopping"></i>  Cart (<span id="cart">0</span>)
+              </button>
+            </ul>
+          </nav><!-- .navbar -->
+    
+        </div>
+      </header><!-- End Header -->
+    
+      <!-- ======= Hero Section ======= -->
+      <section id="hero" class="hero">
+    
+        <div class="info d-flex align-items-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 text-center">
+                {% block content %}{% endblock content %}
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    
+          <div class="carousel-item active" style="background-image: url({% static '/images/360_F_539996737_T5gJEIEqsGUjMXhrLZt0lDLcrOWsSHlb.jpg'%})"></div>
+          <div class="carousel-item" style="background-image: url({% static '/images/shopping-paper-commercial.jpg'%})"></div>
+          <div class="carousel-item" style="background-image: url({% static '/images/360_F_553403777_lHnxCQB2VbjZTbwuOBwsTW8stkgEPmIJ.jpg'%})"></div>
+          <div class="carousel-item" style="background-image: url({% static '/images/HD-wallpaper-supermarket-and-background-grocery-store.jpg'%})"></div>
+          
+    
+          <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+          </a>
+    
+          <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+          </a>
+    
+        </div>
+    
+      </section><!-- End Hero Section -->
+    
+      <main id="main">
+    
+        <!-- ======= Get Started Section ======= -->
+
+      {%block body%}
+     
+      {% endblock body%}
+    
+       <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-content position-relative">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>E-kart</h3>
+              <p>
+                A108 Adam Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links d-flex mt-3">
+                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End footer info column-->
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div><!-- End footer links column-->
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">Product Management</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Graphic Design</a></li>
+            </ul>
+          </div><!-- End footer links column-->
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Hic solutasetp</h4>
+            <ul>
+              <li><a href="#">Molestiae accusamus iure</a></li>
+              <li><a href="#">Excepturi dignissimos</a></li>
+              <li><a href="#">Suscipit distinctio</a></li>
+              <li><a href="#">Dilecta</a></li>
+              <li><a href="#">Sit quas consectetur</a></li>
+            </ul>
+          </div><!-- End footer links column-->
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Nobis illum</h4>
+            <ul>
+              <li><a href="#">Ipsam</a></li>
+              <li><a href="#">Laudantium dolorum</a></li>
+              <li><a href="#">Dinera</a></li>
+              <li><a href="#">Trodelas</a></li>
+              <li><a href="#">Flexo</a></li>
+            </ul>
+          </div><!-- End footer links column-->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal text-center position-relative">
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>E-kart</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/ -->
+          Designed by <a href="/">Varad</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static '/assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static '/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static '/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static '/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static '/assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+  <script src="{% static '/assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static '/assets/js/main.js'%}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% block title %}Sign Up{% endblock title %}
+{% block content %}<div class="container mt-5">
+  <form action = '/auth/signup/' class="col-6 mx-auto card p-3 shadow-lg" method="post">
+      {% csrf_token %}
+      <h2 class='text-dark'>Sign Up</h2>
+      <hr>
+      {% if messages %}
+      <div class="alert alert-primary" role="alert">
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+      </div>
+      {% endif %}
+      
+      
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" name ="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your data with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name ="password" required class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+            <input type="password" name ="password2" required class="form-control" id="exampleInputPassword1">
+          </div>
+          
+          <button type="submit" class="btn btn-success">Sign In</button>
+          <p class='text-dark'>Already User? <a href ='/auth/login/'>Login</a></p>
+        </form>
+   
+</div>   
+{% endblock content %}
